@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>推論チャレンジx3d可視化</title>
+    <script src="x3dom-1.8.2\x3dom.js"></script>
+    <link rel="stylesheet" href="x3dom-1.8.2\x3dom.css" />
+    <script src="index.js"></script>
+    <script src="data.js"></script>
+  </head>
+  <body>
+    <button id="drawingStart">create X3D</button>
+    <div style="border: 1px #333 solid; height: 100vh">
+      <div id="x3d">
+        <x3d width="80vw" height="80vh"><scene></scene></x3d>
+      </div>
+    </div>
+    <!-- x3d部分作成 -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        document
+          .getElementById('drawingStart')
+          .addEventListener('click', () => {
+            const x3d_first = new CreateX3D('x3d');
+            data2.map((x) => x3d_first.boxInsert(x.slice(1, 4), x.slice(4, 7)));
+          });
+      });
+    </script>
+  </body>
+</html>
